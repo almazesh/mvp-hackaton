@@ -1,0 +1,22 @@
+.sidebar_list{
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.4rem;
+  margin-top: 2rem;
+    li{
+      margin: 1.3rem 0;
+      a{
+        color: white;
+        display: flex;
+        align-items: center;
+
+        span {
+          margin: 0 0.6rem;
+          font-size: 1.3rem;
+          svg{
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+}
