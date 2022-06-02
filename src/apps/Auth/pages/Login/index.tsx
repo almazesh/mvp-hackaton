@@ -2,7 +2,7 @@ import React from "react";
 import { useLogin } from '../../hooks/useLogin';
 
 
-export default function Login(){
+export const Login: React.FunctionComponent = () => {
   
   const { actions } = useLogin()
 

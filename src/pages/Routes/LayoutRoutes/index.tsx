@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Main from '../../../apps/Layout/pages/Main';
+import { Main } from '../../../apps/Layout/pages/Main';
 import { NotFound } from '../404/index';
 import { useAuth } from '../../../providers/useAuth';
-import Sidebar from '../../../components/sidebar/index';
+import { Sidebar } from '../../../components/sidebar/index';
 
 
-export const Layout = () => {
+export const Layout: React.FunctionComponent = () => {
   const {user} = useAuth()  
   const navigate = useNavigate()
 

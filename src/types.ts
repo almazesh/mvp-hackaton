@@ -21,3 +21,4 @@ export interface ISidebarListType {
   icon: IconType,
   path:string
 }
+

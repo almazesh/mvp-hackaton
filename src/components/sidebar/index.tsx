@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import './index.scss'
 import Bars from '../../assets/sidebar/Group.png'
-import SidebarList from './sidebar-list/index';
+import { SidebarList } from './sidebar-list/index';
 
-export default function Sidebar(){
+export const Sidebar:React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <section className="sidebar-position col-xl-3" >

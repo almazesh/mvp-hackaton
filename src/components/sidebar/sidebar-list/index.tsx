@@ -4,7 +4,7 @@ import { sidebarList } from '../../../utils/List';
 import { NavLink } from "react-router-dom";
 import { ISidebarListType } from '../../../types';
 
-export default function SidebarList(){
+export const SidebarList:React.FunctionComponent = () => {
   const [sideList] = React.useState<ISidebarListType[]>(sidebarList as ISidebarListType[])
 
   return(

@@ -1,9 +1,9 @@
 import { Auth } from './pages/Routes/AuthRoutes';
 import { Layout } from './pages/Routes/LayoutRoutes';
 import { useAuth } from './providers/useAuth';
-import Loader from './components/Loader/index';
+import { Loader } from './components/Loader/index';
 
-export const App = () => {
+export const App: React.FunctionComponent = () => {
   const { user, loading } = useAuth()
 
   if(loading) return <Loader />

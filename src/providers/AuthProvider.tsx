@@ -11,7 +11,8 @@ interface IProps {
 
 export const AuthContext = createContext<IContext>({} as IContext)
 
-export default function AuthProvider({children}: IProps){
+export const AuthProvider: React.FunctionComponent<IProps> = ({children}) => {
+  
   const [user , setUser] = React.useState<IUser | null>(null)
   const [loading , setLoading] = React.useState<boolean>(true)
   const navigate = useNavigate()

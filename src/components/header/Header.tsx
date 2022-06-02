@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Header(){
-
-
+export const Header: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <nav className="navbar navbar-expand-lg ">

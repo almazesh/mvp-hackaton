@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import * as AuthPages from '../../../apps/Auth/pages'
 
 
-export const Auth = () => {
+export const Auth:React.FunctionComponent = () => {
   return(
     <React.Fragment>
       <Routes>  
