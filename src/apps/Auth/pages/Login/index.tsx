@@ -1,16 +1,15 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import React, { SyntheticEvent } from "react";
-import { authentification } from '../../firebase/index';
+import React from "react";
+import { useLogin } from '../../hooks/useLogin';
 
 
-export default function Auth(){
-  const provider = new GoogleAuthProvider()
+export default function Login(){
+  
+  const { actions } = useLogin()
 
   const signInWithGoogleProvider = (e:React.MouseEvent<HTMLImageElement , MouseEvent>) => {
     e.preventDefault()
-    signInWithPopup(authentification , provider)
+    actions.post()
   }
-
   return (
     <React.Fragment>
       <div 
@@ -21,14 +20,13 @@ export default function Auth(){
           <div className="card  p-5">
             <div className="card-head text-center">
               <h4>Registration</h4>
-
               <div className="mt-5 d-flex justify-content-center ">
                 <img 
                   onClick={(e: React.MouseEvent<HTMLImageElement, MouseEvent>) => signInWithGoogleProvider(e)}
                   className="w-50" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" 
                   alt="" 
                   style={{cursor:'pointer'}}
-                  />
+                />
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ export default function SidebarList(){
             <li key={item.id}>
               <NavLink 
                 to={item.path} 
-                className={(active) => active && 'text-warning'}
+                className={({isActive}: any) => isActive ? 'text-warning' : ''}
               >
                 <span>
                   <item.icon />

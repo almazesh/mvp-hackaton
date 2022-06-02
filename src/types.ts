@@ -12,6 +12,7 @@ export interface IUser {
 export interface IContext {
   user: IUser | null,
   setUser: TypeSetState<IUser | null>,
+  loading:boolean
 }
 
 export interface ISidebarListType {

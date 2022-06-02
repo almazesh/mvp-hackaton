@@ -13,13 +13,13 @@ export const AuthContext = createContext<IContext>({} as IContext)
 
 export default function AuthProvider({children}: IProps){
   const [user , setUser] = React.useState<IUser | null>(null)
+  const [loading , setLoading] = React.useState<boolean>(true)
   const navigate = useNavigate()
 
   React.useEffect(() => {
-
     const Listen = onAuthStateChanged(authentification , auth => {
-      console.log(auth)
       if(auth) {
+        setLoading(false)
         setUser({
           id:auth.uid,
           avatar:auth.photoURL || '',
@@ -28,6 +28,7 @@ export default function AuthProvider({children}: IProps){
       }else{
         setUser(null)
         navigate('/auth') 
+        setLoading(false)
       }
     }) 
     return () => Listen()
@@ -36,7 +37,8 @@ export default function AuthProvider({children}: IProps){
   const state = React.useMemo(() => ({
     user,
     setUser,
-  }), [user , setUser])
+    loading
+  }), [user , setUser, loading])
 
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>
 }

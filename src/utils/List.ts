@@ -13,7 +13,7 @@ export const sidebarList = [
     id:2,
     title:'Профиль',
     icon: FaUserAlt,
-    path:'/personal-room'
+    path:'/profile'
   },
 
   {
