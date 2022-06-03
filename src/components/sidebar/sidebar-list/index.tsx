@@ -2,9 +2,14 @@ import React from "react";
 import styles from './index.module.scss'
 import { sidebarList } from '../../../utils/List';
 import { NavLink } from "react-router-dom";
-import { ISidebarListType } from '../../../types';
+import { ISidebarListType, TypeSetState } from '../../../types';
 
-export const SidebarList:React.FunctionComponent = () => {
+interface IsetSiderbarTitle {
+  setSiderbarTitle: TypeSetState<string>
+}
+
+export const SidebarList:React.FunctionComponent<IsetSiderbarTitle> = ({setSiderbarTitle}) => {
+
   const [sideList] = React.useState<ISidebarListType[]>(sidebarList as ISidebarListType[])
 
   return(
@@ -14,8 +19,9 @@ export const SidebarList:React.FunctionComponent = () => {
           sideList.map(item => (
             <li key={item.id}>
               <NavLink 
+                onClick={() => setSiderbarTitle(item.title)}
                 to={item.path} 
-                className={({isActive}: any) => isActive ? 'text-warning' : ''}
+                className={({isActive}: any) => isActive ? styles.activeLink : ''}
               >
                 <span>
                   <item.icon />

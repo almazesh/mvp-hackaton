@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { TypeSetState } from "../../types";
 import './index.scss'
-import Bars from '../../assets/sidebar/Group.png'
 import { SidebarList } from './sidebar-list/index';
 
-export const Sidebar:React.FunctionComponent = () => {
+interface ISidebarSetTitle {
+  setHeaderTitle: TypeSetState<string>
+}
+
+export const Sidebar:React.FunctionComponent<ISidebarSetTitle> = ({setHeaderTitle}: ISidebarSetTitle) => {
+
   return (
     <React.Fragment>
       <section className="sidebar-position col-xl-3" >
@@ -12,13 +17,11 @@ export const Sidebar:React.FunctionComponent = () => {
           <nav className="navbar sidebar-nav navbar-expand-lg navbar-dark">
             <div className="container d-flex align-items-center ">
               <Link to="" className="navbar-brand">Administration</Link>
-              <span className="bars">
-                <img src={Bars} alt="" />
-              </span>
+              {/* <Link to="" className="navbar-brand">Crafter's</Link> */}
             </div>
           </nav>
           <div className="card sidebar-screen rounded-0">
-            <SidebarList />
+            <SidebarList setSiderbarTitle={setHeaderTitle}/>
           </div>
         </aside>
       </section>
