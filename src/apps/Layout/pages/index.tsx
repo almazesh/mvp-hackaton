@@ -1,10 +1,12 @@
-import { Main } from './Main/index';
 import { Profile } from './Profile/index';
 import { Team } from './Team/index';
+import { Projects } from './Projects/index';
+import { Logout } from './Logout/index';
 
 
 export {
-  Main,
   Profile,
   Team,
+  Projects,
+  Logout,
 }

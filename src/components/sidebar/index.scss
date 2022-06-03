@@ -1,25 +1,5 @@
 .sidebar-position{
   position: fixed;
-  
-  .sidebar-toggle{
-    background: #211F29;
-    z-index: 1;
-    transition: .3s;
-    width: 20%;
-    overflow: hidden;
-
-    a{
-      font-weight: bold;
-    }
-    .bars{
-      cursor: pointer;
-      img{
-        width: 2rem;
-        object-fit: cover;
-      }
-    }
-  }
-
   .sidebar-nav{
     background: #211F29;
     z-index: 1;
@@ -42,17 +22,31 @@
   }
   
   .sidebar-screen{
-    height: 100vh;
+    height: 60vh;
     width: 83%;
 
     background: #211F29;
   }
-  .sidebar-toggle{
-    height: 100vh;
-    width: 80%;
+
+  .sidebar-screen-bottom{
+    height: 40vh;
+    width: 83%;
+
     background: #211F29;
-    overflow: hidden;
   }
+
+
+  .sidebar_list{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    margin-top: .9rem;
+    a{
+      color: white;
+    }
+  }
+ 
 }
 
 

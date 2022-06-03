@@ -1,39 +1,40 @@
 import React from "react";
 import styles from './index.module.scss'
-import { sidebarList } from '../../../utils/List';
 import { NavLink } from "react-router-dom";
-import { ISidebarListType, TypeSetState } from '../../../types';
+import {  TypeSetState } from '../../../types';
+import { signOut } from 'firebase/auth';
+import { authentification } from '../../../firebase/index';
 
 interface IsetSiderbarTitle {
   setSiderbarTitle: TypeSetState<string>
+  item: any
 }
 
-export const SidebarList:React.FunctionComponent<IsetSiderbarTitle> = ({setSiderbarTitle}) => {
+export const SidebarList:React.FunctionComponent<IsetSiderbarTitle> = ({setSiderbarTitle, item}) => {
 
-  const [sideList] = React.useState<ISidebarListType[]>(sidebarList as ISidebarListType[])
+  const signOutFromAccount = (e: React.MouseEvent) => {
+    e.preventDefault()
+    signOut(authentification)
+  }
 
   return(
     <React.Fragment>
-      <ul className={styles.sidebar_list}>
-        {
-          sideList.map(item => (
-            <li key={item.id}>
-              <NavLink 
-                onClick={() => setSiderbarTitle(item.title)}
-                to={item.path} 
-                className={({isActive}: any) => isActive ? styles.activeLink : ''}
-              >
-                <span>
-                  <item.icon />
-                </span> 
-                <span>
-                  {item.title}
-                </span>
-              </NavLink>
-            </li>
-          ))
-        }
-      </ul>
+      <li key={item.id}>
+        <NavLink 
+          onClick={(e) => {
+            setSiderbarTitle(item.title)
+          }}
+          to={item.path} 
+          className={({isActive}: any) => isActive ? styles.activeLink : ''}
+        >
+          <span>
+            <item.icon />
+          </span> 
+          <span>
+            {item.title}
+          </span>
+        </NavLink>
+      </li>
     </React.Fragment>
   )
 }

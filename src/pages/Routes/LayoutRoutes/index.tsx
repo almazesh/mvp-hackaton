@@ -9,7 +9,7 @@ import * as LayoutPages from '../../../apps/Layout/pages'
 export const Layout: React.FunctionComponent = () => {
   const { user } = useAuth()  
   const navigate = useNavigate()
-  const [headerTitle , setHeaderTitle] = React.useState<string>('Главная')
+  const [headerTitle , setHeaderTitle] = React.useState<string>('Проекты')
 
   React.useEffect(() => {
     user && navigate('/')
@@ -25,9 +25,10 @@ export const Layout: React.FunctionComponent = () => {
         <Header headerTitle={headerTitle}/>
         <section className='ms-5 mt-5'>
           <Routes>  
-            <Route path='/' element={<LayoutPages.Main />}/>
+            <Route path='/' element={<LayoutPages.Projects />}/>
             <Route path='/profile' element={<LayoutPages.Profile />} />
             <Route path='/team' element={<LayoutPages.Team />} />
+            <Route path='/logout' element={<LayoutPages.Logout />} />
             <Route path='/404' element={<NotFound />} />
           </Routes>
         </section>

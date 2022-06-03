@@ -1,8 +1,6 @@
-import { signOut } from 'firebase/auth';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../providers/useAuth';
-import { authentification } from '../../firebase/index';
 import  './index.scss'
 
 interface IHeaderProps {
@@ -12,11 +10,6 @@ interface IHeaderProps {
 export const Header: React.FunctionComponent<IHeaderProps> = ({headerTitle}: IHeaderProps) => {
   const { user } = useAuth()
 
-  const signOunFromAccount = (e: React.MouseEvent) => {
-    e.preventDefault()
-    signOut(authentification)
-  }
-
   return (
     <React.Fragment>
       <nav className="navbar headers navbar-expand-lg">
@@ -25,7 +18,6 @@ export const Header: React.FunctionComponent<IHeaderProps> = ({headerTitle}: IHe
           {
             user && (
               <Link 
-                onClick={signOunFromAccount} 
                 to="" 
                 className="navbar-brand d-flex align-items-center  me-5"
               >
