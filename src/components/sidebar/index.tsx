@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { TypeSetState, ISidebarListType } from '../../types';
 import './index.scss'
 import { SidebarList } from './sidebar-list/index';
 import { sidebarListTop, sidebarBottomList } from '../../utils/List';
+import { useAuth } from '../../providers/useAuth';
+import { Avatar } from "../header/components/Avatar/Avatar";
 
 interface ISidebarSetTitle {
   setHeaderTitle: TypeSetState<string>
@@ -13,6 +14,7 @@ export const Sidebar:React.FunctionComponent<ISidebarSetTitle> = ({setHeaderTitl
   const [sideListTop] = React.useState<ISidebarListType[]>(sidebarListTop as ISidebarListType[])
   const [sideListBottom] = React.useState<ISidebarListType[]>(sidebarBottomList as ISidebarListType[])
 
+  const { user } = useAuth()
 
   return (
     <React.Fragment>
@@ -20,8 +22,11 @@ export const Sidebar:React.FunctionComponent<ISidebarSetTitle> = ({setHeaderTitl
         <aside>
           <nav className="navbar sidebar-nav navbar-expand-lg navbar-dark">
             <div className="container d-flex align-items-center ">
-              <Link to="" className="navbar-brand">Administration</Link>
-              {/* <Link to="" className="navbar-brand">Crafter's</Link> */}
+              {
+                user && (
+                  <Avatar />
+                )
+              }
             </div>
           </nav>
           <div className="card sidebar-screen rounded-0">

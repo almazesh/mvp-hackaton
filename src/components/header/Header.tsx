@@ -1,35 +1,38 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useAuth } from '../../providers/useAuth';
 import  './index.scss'
+import { TypeSetState } from '../../types';
+import { HandleCreateIcon } from './components/HandleCreateIcon';
+import { Avatar } from './components/Avatar/Avatar';
+import { Link } from 'react-router-dom';
 
 interface IHeaderProps {
   headerTitle:string
+  setToggleCreateMenu: TypeSetState<boolean>
 }
+export const Header: React.FunctionComponent<IHeaderProps> = (
+  {
+    headerTitle, 
+    setToggleCreateMenu,
+  }: IHeaderProps) => {
+  
+ 
 
-export const Header: React.FunctionComponent<IHeaderProps> = ({headerTitle}: IHeaderProps) => {
-  const { user } = useAuth()
+  const handleShowCreateMenu = () => setToggleCreateMenu(prev => !prev)
 
   return (
     <React.Fragment>
-      <nav className="navbar headers navbar-expand-lg">
-        <div className=" w-100 ms-5 d-flex justify-content-between align-items-center">
-          <h1 style={{fontSize:'1.6rem'}}>{headerTitle}</h1>
-          {
-            user && (
-              <Link 
-                to="" 
-                className="navbar-brand d-flex align-items-center  me-5"
-              >
-                <img
-                  className='me-2' 
-                  src={user?.avatar} 
-                  style={{width:'30px', borderRadius:"50%"}}
-                />
-                {user?.name}
-              </Link>
-            )
-          }
+      <nav className="navbar headers navbar-expand-lg p-0">
+        <div className=" w-100 ms-5 navs d-flex justify-content-between align-items-center">
+          <div>
+            <h1 className='headerTitle'>{headerTitle}</h1>
+          </div>
+          <div className='d-flex align-items-center'>
+            <HandleCreateIcon headerTitle={headerTitle} handleShowCreateMenu={handleShowCreateMenu}/>
+
+            <Link to="" className="navbar-brand">System</Link>
+
+          </div>
         </div>
       </nav>
     </React.Fragment>

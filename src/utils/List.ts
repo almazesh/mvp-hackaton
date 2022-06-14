@@ -1,5 +1,6 @@
 import { AiOutlineLogout} from 'react-icons/ai'
 import {FaUserAlt, FaUsers , FaProjectDiagram} from 'react-icons/fa'
+import { BsListTask } from 'react-icons/bs'
 
 export const sidebarListTop = [
   {
@@ -19,6 +20,12 @@ export const sidebarListTop = [
     title:'Профиль',
     icon: FaUserAlt,
     path:'/profile'
+  },
+  {
+    id:4,
+    title:'Таски',
+    icon: BsListTask,
+    path:'/tasks'
   },
 ]
 

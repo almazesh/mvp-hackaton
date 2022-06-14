@@ -5,15 +5,19 @@
     z-index: 1;
     width: 83%;
     transition: .3s;
+    @media (max-width:768px) {
+      width: 85%;
+      height: 50px;
+    }
+
+    .logo{
+      @media (max-width:768px) {
+        display: none;
+      }
+    }
+
     a{
       font-weight: bold;
-    }
-    .bars{
-      cursor: pointer;
-      img{
-        width: 2rem;
-        object-fit: cover;
-      }
     }
 
     .inline-logo{
@@ -24,6 +28,9 @@
   .sidebar-screen{
     height: 60vh;
     width: 83%;
+    @media (max-width:768px) {
+      width: 85%;
+    }
 
     background: #211F29;
   }
@@ -31,6 +38,9 @@
   .sidebar-screen-bottom{
     height: 40vh;
     width: 83%;
+    @media (max-width:768px) {
+      width: 85%;
+    }
 
     background: #211F29;
   }
@@ -44,6 +54,10 @@
     margin-top: .9rem;
     a{
       color: white;
+    }
+
+    @media (max-width:768px) {
+      padding-left: .5rem;
     }
   }
  

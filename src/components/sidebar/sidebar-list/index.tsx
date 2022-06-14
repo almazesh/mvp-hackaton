@@ -30,7 +30,7 @@ export const SidebarList:React.FunctionComponent<IsetSiderbarTitle> = ({setSider
           <span>
             <item.icon />
           </span> 
-          <span>
+          <span className={styles.title}>
             {item.title}
           </span>
         </NavLink>

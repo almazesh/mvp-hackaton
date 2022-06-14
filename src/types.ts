@@ -5,6 +5,7 @@ export type TypeSetState<T> = Dispatch<SetStateAction<T>>
 
 export interface IUser {
   id:string,
+  email: string
   avatar:string,
   name:string,
 }
@@ -22,3 +23,8 @@ export interface ISidebarListType {
   path:string
 }
 
+export interface IFormInput {
+  type: string
+  placeholder:string
+  setInputsValue: TypeSetState<object | string>
+}
