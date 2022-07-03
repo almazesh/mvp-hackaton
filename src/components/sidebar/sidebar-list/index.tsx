@@ -2,8 +2,6 @@ import React from "react";
 import styles from './index.module.scss'
 import { NavLink } from "react-router-dom";
 import {  TypeSetState } from '../../../types';
-import { signOut } from 'firebase/auth';
-import { authentification } from '../../../firebase/index';
 
 interface IsetSiderbarTitle {
   setSiderbarTitle: TypeSetState<string>
@@ -11,11 +9,6 @@ interface IsetSiderbarTitle {
 }
 
 export const SidebarList:React.FunctionComponent<IsetSiderbarTitle> = ({setSiderbarTitle, item}) => {
-
-  const signOutFromAccount = (e: React.MouseEvent) => {
-    e.preventDefault()
-    signOut(authentification)
-  }
 
   return(
     <React.Fragment>

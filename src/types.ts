@@ -3,17 +3,21 @@ import { IconType } from "react-icons";
 
 export type TypeSetState<T> = Dispatch<SetStateAction<T>>
 
+
 export interface IUser {
-  id:string,
-  email: string
-  avatar:string,
-  name:string,
+  id:number
+  username:string,
+  role: string
+  password:string,
 }
 
 export interface IContext {
-  user: IUser | null,
-  setUser: TypeSetState<IUser | null>,
-  loading:boolean
+    isLoaded:boolean,
+    user:IUser | null,
+    token:string | null,
+    setUser: TypeSetState<null>,
+    setToken: TypeSetState<string>,
+    logOut: TypeSetState<null>,
 }
 
 export interface ISidebarListType {
@@ -26,5 +30,18 @@ export interface ISidebarListType {
 export interface IFormInput {
   type: string
   placeholder:string
-  setInputsValue: TypeSetState<object | string>
+  
+  
+}
+
+
+export interface IInputRegister {
+  username: string,
+  role:string
+  password:string
+}
+
+export interface IInputLogin {
+  username: string,
+  password:string
 }

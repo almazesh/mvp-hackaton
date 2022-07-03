@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { NotFound } from '../404/index';
 import { useAuth } from '../../../providers/useAuth';
 import { Sidebar } from '../../../components/sidebar/index';
@@ -10,8 +10,6 @@ import * as LayoutPages from '../../../apps/Layout/pages'
 
 import styles from './index.module.scss'
 
-
-
 export const Layout: React.FunctionComponent = () => {
   const { user } = useAuth()  
   const navigate = useNavigate()
@@ -21,7 +19,7 @@ export const Layout: React.FunctionComponent = () => {
   React.useEffect(() => {
     user && navigate('/')
   }, [user])
-  
+
   return(
     <React.Fragment>
       <Sidebar setHeaderTitle={setHeaderTitle}/>
@@ -31,15 +29,19 @@ export const Layout: React.FunctionComponent = () => {
       >
         <Header 
           headerTitle={headerTitle} 
+          setHeaderTitle={setHeaderTitle}
           setToggleCreateMenu={setToggleCreateMenu}
         />
-        <section className='ms-3 mt-5' style={{height:'100vh',background:'#f2f2f2'}}>
+        <section className='ms-5 mt-5' style={{height:'80vh'}}>
           <Routes>  
             <Route path='/' element={<LayoutPages.Projects toggleCreateMenu={toggleCreateMenu}/>}/>
             <Route path='/profile' element={<LayoutPages.Profile />} />
             <Route path='/team' element={<LayoutPages.Team />} />
+            <Route path='/create/projects' element={<LayoutPages.CreateProjects />} />
+            <Route path='/todo' element={<LayoutPages.Tasks />} />
             <Route path='/logout' element={<LayoutPages.Logout />} />
             <Route path='/404' element={<NotFound />} />
+            <Route path='*' element={<Navigate to={'/'} />} />
           </Routes>
         </section>
       </section>

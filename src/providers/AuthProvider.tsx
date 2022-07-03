@@ -1,46 +1,73 @@
-import { createContext, ReactElement } from "react"
-import { IContext, IUser } from '../types';
+import { ReactElement } from "react"
 import React from 'react';
-import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from 'firebase/auth';
-import { authentification } from '../firebase/index';
+import { AuthContext } from './AuthContext';
+import Cookies from 'js-cookie';
+import { allEndpoints } from '../api/index';
 
 interface IProps {
   children: ReactElement
 }
 
-export const AuthContext = createContext<IContext>({} as IContext)
+export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => {
+  const [isLoaded , setIsLoaded] = React.useState(false);
+  const [user , setUser] = React.useState(null);
+  const [token , setTokenData] = React.useState(null);
 
-export const AuthProvider: React.FunctionComponent<IProps> = ({children}) => {
-  const [user , setUser] = React.useState<IUser | null>(null)
-  const [loading , setLoading] = React.useState<boolean>(true)
-  const navigate = useNavigate()
+  const setToken = React.useCallback((tokenData: string | any) => {
+    setTokenData(tokenData)
 
+    if(tokenData){
+      Cookies.set("auth-token" , tokenData)
+    } else{
+      Cookies.remove("auth-token")
+    }
+  }, [])
+
+  const logOut = React.useCallback(() => {
+    setUser(null);
+    setToken(null);
+  }, [setToken])
+
+  const loadData = React.useCallback( async () => {
+    const tokenData: any = Cookies.get("auth-token");
+    setTokenData(tokenData);
+
+    try{
+      if(tokenData) {
+        allEndpoints.endPoints.handleGetProfile().then(res => {
+          const users = res.data;
+
+          const currentUserName = Cookies.get('username');
+
+          const currentUser = users.find((item: any) => item.username === currentUserName);
+
+          setUser(currentUser)
+        })
+      }
+    }catch{
+      setToken(null)
+    } finally {
+      setIsLoaded(true)
+    }
+  }, [setToken])
 
   React.useEffect(() => {
-    const Listen = onAuthStateChanged(authentification , auth => {
-      if(auth) {
-        setLoading(false)
-        setUser({
-          id:auth.uid,
-          email:auth.email || '',
-          avatar:auth.photoURL || '',
-          name:auth.displayName || '',
-        })
-      }else{
-        setUser(null)
-        navigate('/auth') 
-        setLoading(false)
-      }
-    }) 
-    return () => Listen()
-  },  [])
-  
-  const state = React.useMemo(() => ({
-    user,
-    setUser,
-    loading
-  }), [user , setUser, loading])
+    loadData();
+  }, [loadData])
 
-  return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>
+  const contextValue = React.useMemo(
+    () => ({
+      isLoaded,
+      user,
+      token,
+      setUser,
+      setToken,
+      logOut
+    }), 
+    [isLoaded , user , token , setUser, setToken ,logOut]
+  )
+
+  return <AuthContext.Provider value={contextValue}>
+            {props.children}
+         </AuthContext.Provider>
 }

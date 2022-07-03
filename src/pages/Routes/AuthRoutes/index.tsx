@@ -8,7 +8,8 @@ export const Auth:React.FunctionComponent = () => {
   return(
     <React.Fragment>
       <Routes>  
-        <Route path='/auth/login' element={<AuthPages.Register />}/>
+        <Route path='/auth/register' element={<AuthPages.Register />}/>
+        <Route path='/auth/login' element={<AuthPages.Login />}/>
         <Route path='*' element={<Navigate to={'/auth/login'} />} />
       </Routes>
     </React.Fragment>

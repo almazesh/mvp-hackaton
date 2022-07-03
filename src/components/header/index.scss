@@ -2,7 +2,9 @@
   box-shadow: 5px 0 5px gray;
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 57px;
+  background: #211F29;
+  color: white;
 
   .navs{
     @media (max-width:768px) {

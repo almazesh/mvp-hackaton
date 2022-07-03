@@ -3,10 +3,10 @@ import { endPoints } from '../../../api/API';
 
 
 
-export const useRegister = () => {
+export const useLogin = () => {
 
   const post = React.useCallback((data:Object) => {
-    return endPoints.handleAuthRegister(data)
+    return endPoints.handleAuthLogin(data)
   }, [])
 
   return {

@@ -23,9 +23,9 @@ export const sidebarListTop = [
   },
   {
     id:4,
-    title:'Таски',
+    title:'Задачи',
     icon: BsListTask,
-    path:'/tasks'
+    path:'/todo'
   },
 ]
 
@@ -35,5 +35,26 @@ export const sidebarBottomList = [
     title:'Выйти',
     icon: AiOutlineLogout,
     path:'/logout'
+  },
+]
+
+
+
+export const roles = [
+  {
+    id:1,
+    title:'Front-End'
+  },
+  {
+    id:2,
+    title:'Back-End'
+  },
+  {
+    id:3,
+    title:'PM'
+  },
+  {
+    id:4,
+    title:'Designer'
   },
 ]

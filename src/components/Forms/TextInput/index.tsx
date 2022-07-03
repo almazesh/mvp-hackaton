@@ -1,11 +1,10 @@
 import React, { LegacyRef } from 'react';
 import { IFormInput } from '../../../types';
 
-
 export const TextInput: React.ForwardRefExoticComponent<IFormInput> = React.forwardRef(({
   type = 'text',
   placeholder,
-  setInputsValue,
+  ...rest
 }: IFormInput, ref: LegacyRef<HTMLInputElement> ) => {
   return (
     <input 
@@ -13,7 +12,7 @@ export const TextInput: React.ForwardRefExoticComponent<IFormInput> = React.forw
       className={'form-control p-3'}
       placeholder={placeholder}
       ref={ref}
-      onChange={(e:React.ChangeEvent<HTMLInputElement>) => setInputsValue(e.target.value)}
+      {...rest}
     />  
   )
 })

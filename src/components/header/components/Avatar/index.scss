@@ -1,12 +1,47 @@
 .avatar{
+  
   img{
+    width:40px;
+    height:40px;
+    object-fit:cover;
+    border-radius:50%;
     @media (max-width:768px) {
-      width:30px;
-      height:30px;
+      width:35px;
+      height:35px;
       position:absolute;
       object-fit:cover;
       border-radius:50%;
+      left: 23%;
     }
+  }
+}
+
+.avatarstatus{
+  display: flex;
+  align-items: center;
+
+  .front{
+    width: 15px;  
+    height: 15px;
+    background-color: yellow;
+    border-radius: 100%;
+    box-shadow: 0 0 5px yellow;
+  }
+  
+  .back{
+    width: 15px;
+    height: 15px;
+    background-color: rgb(6, 184, 6);
+    border-radius: 100%;
+    box-shadow: 0 0 5px rgb(6, 184, 6);
+  }
+
+  .designer{
+    width: 15px;
+    height: 15px;
+    background-color: rgb(184, 6, 151);
+    border-radius: 100%;
+    box-shadow: 0 0 5px rgb(184, 6, 151);
   }
 }
 
