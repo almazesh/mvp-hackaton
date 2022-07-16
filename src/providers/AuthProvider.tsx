@@ -2,7 +2,7 @@ import { ReactElement } from "react"
 import React from 'react';
 import { AuthContext } from './AuthContext';
 import Cookies from 'js-cookie';
-import { allEndpoints } from '../api/index';
+import { allEndpoints } from '../api';
 
 interface IProps {
   children: ReactElement
@@ -11,6 +11,7 @@ interface IProps {
 export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => {
   const [isLoaded , setIsLoaded] = React.useState(false);
   const [user , setUser] = React.useState(null);
+  const [users , setUsers] = React.useState(null);
   const [token , setTokenData] = React.useState(null);
 
   const setToken = React.useCallback((tokenData: string | any) => {
@@ -55,6 +56,16 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
     loadData();
   }, [loadData])
 
+  // GET ALL USER
+
+  React.useEffect(() => {
+    allEndpoints.endPoints.handleGetAllUser().then(res => {
+      const users = res.data 
+
+      setUsers(users)
+    })
+  }, [])
+
   const contextValue = React.useMemo(
     () => ({
       isLoaded,
@@ -62,9 +73,10 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       token,
       setUser,
       setToken,
-      logOut
+      logOut,
+      users
     }), 
-    [isLoaded , user , token , setUser, setToken ,logOut]
+    [isLoaded , user , token , setUser, setToken ,logOut ,users]
   )
 
   return <AuthContext.Provider value={contextValue}>

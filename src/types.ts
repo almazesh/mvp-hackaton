@@ -18,6 +18,7 @@ export interface IContext {
     setUser: TypeSetState<null>,
     setToken: TypeSetState<string>,
     logOut: TypeSetState<null>,
+    users: any
 }
 
 export interface ISidebarListType {
@@ -30,8 +31,9 @@ export interface ISidebarListType {
 export interface IFormInput {
   type: string
   placeholder:string
-  
-  
+  labels:any
+  className:string
+  handleValid:boolean
 }
 
 

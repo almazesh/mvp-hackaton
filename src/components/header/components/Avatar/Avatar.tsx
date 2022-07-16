@@ -35,6 +35,13 @@ export const Avatar = () => {
             )
           }
 
+          {
+            user?.role === 'PM' && (
+              <div className='PM me-2'></div>
+            )
+          }
+
+
           { user?.role}
         </span>
         

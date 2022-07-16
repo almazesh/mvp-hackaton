@@ -1,0 +1,31 @@
+.front{
+  width: 15px;  
+  height: 15px;
+  background-color: yellow;
+  border-radius: 100%;
+  box-shadow: 0 0 5px yellow;
+}
+
+.back{
+  width: 15px;
+  height: 15px;
+  background-color: rgb(6, 184, 6);
+  border-radius: 100%;
+  box-shadow: 0 0 5px rgb(6, 184, 6);
+}
+
+.designer{
+  width: 15px;
+  height: 15px;
+  background-color: rgb(184, 6, 151);
+  border-radius: 100%;
+  box-shadow: 0 0 5px rgb(184, 6, 151);
+}
+
+.PM{
+  width: 15px;
+  height: 15px;
+  background-color: #0dcaf0;
+  border-radius: 100%;
+  box-shadow: 0 0 5px #0dcaf0;
+}

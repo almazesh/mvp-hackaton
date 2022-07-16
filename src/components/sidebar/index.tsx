@@ -6,11 +6,11 @@ import { sidebarListTop, sidebarBottomList } from '../../utils/List';
 
 interface ISidebarSetTitle {
   setHeaderTitle: TypeSetState<string>
-}
+};
 
 export const Sidebar:React.FunctionComponent<ISidebarSetTitle> = ({setHeaderTitle}: ISidebarSetTitle) => {
-  const [sideListTop] = React.useState<ISidebarListType[]>(sidebarListTop as ISidebarListType[])
-  const [sideListBottom] = React.useState<ISidebarListType[]>(sidebarBottomList as ISidebarListType[])
+  const [sideListTop] = React.useState<ISidebarListType[]>(sidebarListTop as ISidebarListType[]);
+  const [sideListBottom] = React.useState<ISidebarListType[]>(sidebarBottomList as ISidebarListType[]);
 
   return (
 
@@ -53,4 +53,4 @@ export const Sidebar:React.FunctionComponent<ISidebarSetTitle> = ({setHeaderTitl
       </section>
     </React.Fragment>
   )
-}
+};

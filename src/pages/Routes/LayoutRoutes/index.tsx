@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-import { NotFound } from '../404/index';
+import { NotFound } from '../404';
 import { useAuth } from '../../../providers/useAuth';
-import { Sidebar } from '../../../components/sidebar/index';
+import { Sidebar } from '../../../components/sidebar';
 import { Header } from '../../../components/header/Header';
 import * as LayoutPages from '../../../apps/Layout/pages'
 

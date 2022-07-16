@@ -7,7 +7,7 @@ interface IHandleIcon {
   headerTitle:string
   handleShowCreateMenu: () => void;
   setHeaderTitle: TypeSetState<string>
-}
+};
 
 export const HandleCreateIcon: React.FunctionComponent<IHandleIcon> = (
   {
@@ -16,15 +16,15 @@ export const HandleCreateIcon: React.FunctionComponent<IHandleIcon> = (
     setHeaderTitle
   }: IHandleIcon) => {
 
-  const [changeFolder , setChangeFolder] = React.useState<boolean>(false)
+  const [changeFolder , setChangeFolder] = React.useState<boolean>(false);
 
-  const handleChangeCreateFolderIcon = () => setChangeFolder(prev => !prev)
+  const handleChangeCreateFolderIcon = () => setChangeFolder(prev => !prev);
 
   return (
     <React.Fragment>
       {
         headerTitle === 'Проекты' && 
-          <div className='me-4' style={{position:'absolute',right:'6%'}}>
+          <div className='me-4'>
             {
               changeFolder ? (
                 <Link to={'/create/projects'}>
@@ -55,4 +55,4 @@ export const HandleCreateIcon: React.FunctionComponent<IHandleIcon> = (
       }
     </React.Fragment>
   )
-}
+};

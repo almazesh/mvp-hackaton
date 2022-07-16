@@ -1,9 +1,9 @@
-import { Profile } from './Profile/index';
-import { Team } from './Team/index';
-import { Projects } from './Projects/index';
-import { Logout } from './Logout/index';
+import { Profile } from './Profile';
+import { Team } from './Team';
+import { Projects } from './Projects';
+import { Logout } from './Logout';
 import { CreateProjects } from './Create/Projects/';
-import { Tasks } from './Tasks/index';
+import { Tasks } from './Tasks';
 
 
 export {
