@@ -14,6 +14,7 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
   const [token , setTokenData] = React.useState(null);
   const [projects , setProjects] = React.useState(null);
   const [alert , setAlert] = React.useState(false);
+  const [alertTitle , setAlertTitle] = React.useState('')
   const [reRenderer , setReRenderer] = React.useState('work')
 
   const setToken = React.useCallback((tokenData: string | any) => {
@@ -79,7 +80,6 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       })
   }, [reRenderer]);
 
-
   const contextValue = React.useMemo(
     () => ({
       isLoaded,
@@ -92,7 +92,9 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       projects,
       setAlert,
       alert,
-      setReRenderer
+      setReRenderer,
+      alertTitle,
+      setAlertTitle
     }), 
     [
       isLoaded ,
@@ -105,7 +107,9 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       projects,
       setAlert,
       alert,
-      setReRenderer
+      setReRenderer,
+      alertTitle,
+      setAlertTitle
     ]
   );
 

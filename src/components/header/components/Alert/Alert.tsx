@@ -3,8 +3,8 @@ import { Alert, AlertIcon } from '@chakra-ui/react';
 import { useAuth } from '../../../../providers/useAuth';
 import './index.scss'
 
-export const AlertAuth = ( ) => {
-  const { alert , setAlert} = useAuth()
+export const AlertAuth: React.FunctionComponent = ( ) => {
+  const { alert , setAlert , alertTitle} = useAuth()
 
   const handleClose = () => setAlert(false)
 
@@ -13,7 +13,7 @@ export const AlertAuth = ( ) => {
       <Alert status='success'  className='d-flex justify-content-between'>
         <div className='d-flex'>
           <AlertIcon />
-          Успешная авторизация!
+          {alertTitle}
         </div>
         <div className='closeItem' onClick={handleClose}>&times;</div>
       </Alert>

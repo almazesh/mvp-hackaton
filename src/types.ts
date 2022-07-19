@@ -32,7 +32,9 @@ export interface IContext {
     projects: IProjects[] | null,
     setAlert: TypeSetState<boolean>
     alert: boolean,
-    setReRenderer: TypeSetState<string>
+    setReRenderer: TypeSetState<string>,
+    alertTitle: string,
+    setAlertTitle: TypeSetState<string>
 }
 
 export interface ISidebarListType {

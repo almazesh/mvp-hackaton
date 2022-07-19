@@ -5,9 +5,10 @@
     display: flex;
     justify-content: flex-start;
     gap: 3rem;
+    flex-wrap: wrap;
     .project_card{
       background: white;
-      width: 30%;
+      width: 310px;
       height: auto;
       box-shadow:  0 0 5px whitesmoke;
       padding: 2rem;
@@ -17,7 +18,7 @@
       h1{
         text-transform: capitalize;
         font-weight: 400;
-        letter-spacing: .2rem;
+        letter-spacing: .1rem;
         margin-top: 0;
         font-size: 1.2rem;
         position: relative;
@@ -40,7 +41,7 @@
       .projects_status{
         position: absolute;
         right: 5%;
-        top: 5%;
+        top: 2%;
         .status{
           text-transform: capitalize;
           font-weight: bold;
@@ -91,6 +92,7 @@
         display: flex;
         margin-top: 3rem;
         align-items: center;
+        justify-content: space-between;
         span{
           margin-right: .7rem;
           font-weight: 600;

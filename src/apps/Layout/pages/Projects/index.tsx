@@ -15,10 +15,8 @@ interface IProjectProps {
 };
 
 export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitle }: IProjectProps) => {
-  const { projects , users , setReRenderer} = useAuth();
+  const { projects , users , setReRenderer , setAlert , setAlertTitle} = useAuth();
   
-  if(!projects) return <Loader />;
-
   const handleSwitch = (e: React.ChangeEvent<HTMLInputElement> , ids: number) => {
     const event = e.target.checked;
 
@@ -29,6 +27,20 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
         setReRenderer('worlk')
       })
   };
+
+  const handleDelete = (id: number) => {
+    allEndpoints.endPoints.handleDeleteProject(id)
+      .then(res => {
+        setReRenderer('delete')
+        setAlert(true)
+        setAlertTitle('Успешно удалено!')
+    })
+  }
+
+
+  if(!projects) return <Loader />;
+
+  if(projects.length === 0) return <h1>None</h1>
 
   return (
     <section className={styles.project_container}>
@@ -92,7 +104,11 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
               justifyContent={"space-between"}
               className="mt-5"
             >
-              <Button colorScheme={"red"} disabled={item.status === 'active' ? true : false}>
+              <Button 
+                onClick={() => handleDelete(item.id)} 
+                colorScheme={"red"} 
+                disabled={item.status === 'active' ? true : false}
+              >
                 <RiDeleteBin5Fill />
               </Button>
               <Switch  

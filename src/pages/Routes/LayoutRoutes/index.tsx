@@ -33,7 +33,7 @@ export const Layout: React.FunctionComponent = () => {
           setHeaderTitle={setHeaderTitle}
           setToggleCreateMenu={setToggleCreateMenu}
         />
-        <section className='ms-5 mt-5' style={{height:'90vh'}}>
+        <section className='ms-5 mt-5 pb-5' style={{height:'100vh'}}>
           <Routes>  
             <Route path='/' element={<LayoutPages.Projects setHeaderTitle={setHeaderTitle}/>}/>
             <Route path='/profile' element={<LayoutPages.Profile />} />
