@@ -6,18 +6,29 @@ import { Loader } from '../../../../components/Loader';
 import { GrLocationPin } from 'react-icons/gr'
 import { CgArrowsExpandUpRight } from 'react-icons/cg'
 import { FaUsersCog } from 'react-icons/fa'
-import { Button } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { FormControl, Switch, Button } from '@chakra-ui/react';
+import { RiDeleteBin5Fill } from 'react-icons/ri'
+import { allEndpoints } from '../../../../api';
 
 interface IProjectProps {
   setHeaderTitle: TypeSetState<string>
 };
 
 export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitle }: IProjectProps) => {
-  const { projects } = useAuth();
-  const navigate = useNavigate()
+  const { projects , users , setReRenderer} = useAuth();
   
   if(!projects) return <Loader />;
+
+  const handleSwitch = (e: React.ChangeEvent<HTMLInputElement> , ids: number) => {
+    const event = e.target.checked;
+
+    allEndpoints.endPoints.handlePatchProjectStatus(ids , 
+      event ? {status: 'inactive'} : {status: 'active'}
+    )
+      .then(res => {
+        setReRenderer('worlk')
+      })
+  };
 
   return (
     <section className={styles.project_container}>
@@ -25,7 +36,7 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
         {projects?.map((item: IProjects) => (
           <div key={item.id} className={styles.project_card}>
             <div className={styles.projects_status}>
-              <span>статус: <span className={styles.status + ' text-success'}>{item.status}</span></span>
+              <span>статус: <span className={item.status === 'active' ? styles.status + ' text-success' : styles.status + ' text-danger'}>{item.status}</span></span>
             </div>
             <h1>{item.caption}</h1>
 
@@ -54,21 +65,8 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
               </div>
             </div>
 
-
-            <div className='mt-5 '>
-              <Button  
-                colorScheme={"facebook"} 
-                className="w-100"
-                onClick={() => {
-                  navigate(`/projects/${item.id}/${item.caption}`);
-                  setHeaderTitle(`Подробнее о проекте`)
-                }}
-              >
-                Подробнее
-              </Button>
-            </div>
             {/* Devs */}
-            {/* <div className={styles.projects_dev_title}>
+            <div className={styles.projects_dev_title}>
               <span>Участники проекта</span>
               <FaUsersCog />
             </div>
@@ -87,8 +85,20 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
                   })
                 })
               }
-            </ul> */}
-
+            </ul>
+            <FormControl 
+              display='flex' 
+              alignItems='center' 
+              justifyContent={"space-between"}
+              className="mt-5"
+            >
+              <Button colorScheme={"red"} disabled={item.status === 'active' ? true : false}>
+                <RiDeleteBin5Fill />
+              </Button>
+              <Switch  
+                isChecked={item.status === 'inactive' ? true : false}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSwitch( e, item.id)} />
+            </FormControl>
           </div>
         ))}
       </div>

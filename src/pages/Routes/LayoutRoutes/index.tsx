@@ -36,7 +36,6 @@ export const Layout: React.FunctionComponent = () => {
         <section className='ms-5 mt-5' style={{height:'90vh'}}>
           <Routes>  
             <Route path='/' element={<LayoutPages.Projects setHeaderTitle={setHeaderTitle}/>}/>
-            <Route path='/projects/:id/:caption' element={<LayoutPages.AboutProjectPage />}/>
             <Route path='/profile' element={<LayoutPages.Profile />} />
             <Route path='/team' element={<LayoutPages.Team />} />
             <Route path='/create/projects' element={<LayoutPages.CreateProjects />} />

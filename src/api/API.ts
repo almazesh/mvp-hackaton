@@ -8,7 +8,7 @@ export const endPoints = {
   handleGetAllUser: () => instance.get(`/api/users/`),
   handleCreateProject: (data: Object) => instance.post('/api/projects/' , data),
   handleGetAllProjects: () => instance.get('/api/projects/'),
-  handleGetProject: (id: string) => instance.get(`/api/projects/${id}/`)
+  handlePatchProjectStatus: (id: number , data: Object) => instance.patch(`/api/projects/${id}/` , data)
 }
 
 
