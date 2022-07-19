@@ -1,4 +1,4 @@
-import { instance } from '../configs/index';
+import { instance } from '../configs';
 
 
 export const endPoints = {
@@ -6,7 +6,9 @@ export const endPoints = {
   handleAuthLogin: (data: Object) => instance.post('/auth/token/login', data),
   handleGetProfile: () => instance.get(`/api/users/`),
   handleGetAllUser: () => instance.get(`/api/users/`),
-  handleCreateProject: (data: Object) => instance.post('/api/projects/' , data)
+  handleCreateProject: (data: Object) => instance.post('/api/projects/' , data),
+  handleGetAllProjects: () => instance.get('/api/projects/'),
+  handleGetProject: (id: string) => instance.get(`/api/projects/${id}/`)
 }
 
 

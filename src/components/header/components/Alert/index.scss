@@ -1,0 +1,16 @@
+.alertAuth{
+  position: absolute;
+  width: 300px;
+  bottom: 5%;
+  left: -50%;
+  transition: .3s;
+  &.showAlert{
+    left: 1%;
+  }
+  .closeItem{
+    position: absolute;
+    right: 5%;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}

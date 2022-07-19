@@ -22,8 +22,8 @@ export const Team: React.FunctionComponent = () => {
             users?.map((item: IUser) => (
               <tr 
                 key={item.id} 
-                style={{height:"70px"}}  
-                className={user?.id === item.id ? 'bg-secondary text-light' : ''}
+                style={user?.id === item.id ? {height:'70px', background:'#211F29'} : {height:'70px'}}  
+                className={user?.id === item.id ? 'text-light' : ''}
               >
                 <th className="pt-4" scope="row">{item.id}</th>
                 <td className="pt-4"><b>{item.username}</b></td>

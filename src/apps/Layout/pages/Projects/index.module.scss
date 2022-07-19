@@ -1,3 +1,138 @@
 .project_container{
   position: relative;
+
+  .project_row{
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+    .project_card{
+      background: white;
+      width: 30%;
+      height: auto;
+      box-shadow:  0 0 5px whitesmoke;
+      padding: 2rem;
+      transition: .3s;
+      position: relative;
+      
+      h1{
+        text-transform: capitalize;
+        font-weight: 400;
+        letter-spacing: .2rem;
+        margin-top: 0;
+        font-size: 1.2rem;
+        position: relative;
+        transition: .5s;
+      }
+
+      // On hover
+
+      &:hover {
+        box-shadow:inset  0 0 3px rgb(28, 167, 167);
+        .project_time_row{
+          span{
+            .arrow_toRight{
+              transform: rotateZ(45deg);
+            }
+          }
+        }
+      }
+      // Status of project
+      .projects_status{
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        .status{
+          text-transform: capitalize;
+          font-weight: bold;
+        }
+      }
+      
+      .project_time_row{
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        span{
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          position: relative;
+          .success_status{
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(6, 184, 6);
+            border-radius: 100%;
+            top: 1.5%;
+            left: 7px;
+            box-shadow: 0 0 5px rgb(6, 184, 6);
+          }
+          .danger_status{
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 100%;
+            top: 1.5%;
+            right: 7px;
+            box-shadow: 0 0 5px red;
+          }
+
+          .arrow_toRight{
+            transition: .3s;
+          }
+
+          svg{
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      .projects_dev_title{
+        display: flex;
+        margin-top: 3rem;
+        align-items: center;
+        span{
+          margin-right: .7rem;
+          font-weight: 600;
+        }
+        svg{
+          font-size: 2rem;
+        }
+      }
+
+      .projects_developers{
+        list-style: none;
+        margin-top: 1.5rem;
+        li{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .projects_divider{
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: gray;
+          top: -5px;
+          left: 48%;
+          border-radius: 50%;
+        }
+      }
+      
+      .projects_timeStatus{
+        display: flex;
+        justify-content: space-between;
+        span{
+          font-size: 15px;
+          margin: 0 20px;
+        }
+      }
+    } 
+  }
 }

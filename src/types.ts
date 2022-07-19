@@ -11,6 +11,16 @@ export interface IUser {
   password:string,
 }
 
+export interface IProjects {
+  id: number
+  caption: string
+  start: string
+  redline: string
+  deadline: string
+  status: string
+  developers:any
+}
+
 export interface IContext {
     isLoaded:boolean,
     user:IUser | null,
@@ -18,7 +28,10 @@ export interface IContext {
     setUser: TypeSetState<null>,
     setToken: TypeSetState<string>,
     logOut: TypeSetState<null>,
-    users: any
+    users: any,
+    projects: IProjects[] | null,
+    setAlert: TypeSetState<boolean>
+    alert: boolean
 }
 
 export interface ISidebarListType {

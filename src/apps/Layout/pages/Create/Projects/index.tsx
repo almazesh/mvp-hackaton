@@ -21,16 +21,17 @@ export const CreateProjects:React.FunctionComponent = () => {
   });
 
   const handleCreate = React.useCallback((datas:any) => {
-    // allEndpoints.endPoints.handleCreateProject(datas)
-    //   .then(res => {
-    //     reset()
-    //     console.log(res)
-    // })
     const newData = {
       ...datas,
-      developers: devs
+      developers: [1 , 2 , 3]
     }
-    console.log(newData)
+
+    allEndpoints.endPoints.handleCreateProject(newData)
+      .then(res => {
+        reset()
+        console.log(res)
+    })
+    
   }, [reset]);
 
   const setUpTheDevs = ( e: React.ChangeEvent<HTMLInputElement>) => {

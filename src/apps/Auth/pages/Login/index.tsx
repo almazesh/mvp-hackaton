@@ -27,11 +27,18 @@ export const Login: React.FunctionComponent = () => {
   const LoginWithEmailAndPassword = React.useCallback((data:IInputLogin | any) => {
     Cookies.set('username' , data.username);
 
+
     actions.post(data)
       .then(res => {
         resetFields(data);
 
         const { data: loginData } = res;
+
+        if(res.status >= 200 && res.status <= 299){
+          setTimeout(() => {
+            auth.setAlert(true)
+          }, 1000)
+        }
 
         auth.setToken(loginData.auth_token);
       });

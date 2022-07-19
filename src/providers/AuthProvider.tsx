@@ -1,33 +1,34 @@
-import { ReactElement } from "react"
 import React from 'react';
 import { AuthContext } from './AuthContext';
 import Cookies from 'js-cookie';
 import { allEndpoints } from '../api';
 
 interface IProps {
-  children: ReactElement
-}
+  children: React.ReactElement
+};
 
 export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => {
   const [isLoaded , setIsLoaded] = React.useState(false);
   const [user , setUser] = React.useState(null);
   const [users , setUsers] = React.useState(null);
   const [token , setTokenData] = React.useState(null);
+  const [projects , setProjects] = React.useState(null);
+  const [alert , setAlert] = React.useState(false);
 
   const setToken = React.useCallback((tokenData: string | any) => {
-    setTokenData(tokenData)
+    setTokenData(tokenData);
 
     if(tokenData){
-      Cookies.set("auth-token" , tokenData)
+      Cookies.set("auth-token" , tokenData);
     } else{
-      Cookies.remove("auth-token")
+      Cookies.remove("auth-token");
     }
-  }, [])
+  }, []);
 
   const logOut = React.useCallback(() => {
     setUser(null);
     setToken(null);
-  }, [setToken])
+  }, [setToken]);
 
   const loadData = React.useCallback( async () => {
     const tokenData: any = Cookies.get("auth-token");
@@ -42,29 +43,40 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
 
           const currentUser = users.find((item: any) => item.username === currentUserName);
 
-          setUser(currentUser)
+          setUser(currentUser);
         })
       }
     }catch{
-      setToken(null)
+      setToken(null);
     } finally {
-      setIsLoaded(true)
+      setIsLoaded(true);
     }
-  }, [setToken])
+  }, [setToken]);
 
   React.useEffect(() => {
     loadData();
-  }, [loadData])
+  }, [loadData]);
 
   // GET ALL USER
 
   React.useEffect(() => {
     allEndpoints.endPoints.handleGetAllUser().then(res => {
-      const users = res.data 
+      const users = res.data;
 
-      setUsers(users)
+      setUsers(users);
     })
-  }, [])
+  }, []);
+
+  // GET ALL PROJECTS
+
+  React.useEffect(() => {
+    allEndpoints.endPoints.handleGetAllProjects()
+      .then(res => {
+        const data = res.data;
+        setProjects(data);
+      })
+  }, []);
+
 
   const contextValue = React.useMemo(
     () => ({
@@ -74,12 +86,26 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       setUser,
       setToken,
       logOut,
-      users
+      users,
+      projects,
+      setAlert,
+      alert
     }), 
-    [isLoaded , user , token , setUser, setToken ,logOut ,users]
-  )
+    [
+      isLoaded ,
+      user , 
+      token , 
+      setUser, 
+      setToken ,
+      logOut ,
+      users, 
+      projects,
+      setAlert,
+      alert
+    ]
+  );
 
   return <AuthContext.Provider value={contextValue}>
             {props.children}
          </AuthContext.Provider>
-}
+};

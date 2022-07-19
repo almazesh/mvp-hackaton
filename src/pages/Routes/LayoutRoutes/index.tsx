@@ -9,6 +9,7 @@ import * as LayoutPages from '../../../apps/Layout/pages'
 // CSS Imports
 
 import styles from './index.module.scss'
+import { AlertAuth } from '../../../components/header/components/Alert/Alert';
 
 export const Layout: React.FunctionComponent = () => {
   const { user } = useAuth()  
@@ -23,7 +24,7 @@ export const Layout: React.FunctionComponent = () => {
   return(
     <React.Fragment>
       <Sidebar setHeaderTitle={setHeaderTitle}/>
-      
+        
       <section
         className={styles.screen_section}
       >
@@ -32,9 +33,10 @@ export const Layout: React.FunctionComponent = () => {
           setHeaderTitle={setHeaderTitle}
           setToggleCreateMenu={setToggleCreateMenu}
         />
-        <section className='ms-5 mt-5' style={{height:'80vh'}}>
+        <section className='ms-5 mt-5' style={{height:'90vh'}}>
           <Routes>  
-            <Route path='/' element={<LayoutPages.Projects toggleCreateMenu={toggleCreateMenu}/>}/>
+            <Route path='/' element={<LayoutPages.Projects setHeaderTitle={setHeaderTitle}/>}/>
+            <Route path='/projects/:id/:caption' element={<LayoutPages.AboutProjectPage />}/>
             <Route path='/profile' element={<LayoutPages.Profile />} />
             <Route path='/team' element={<LayoutPages.Team />} />
             <Route path='/create/projects' element={<LayoutPages.CreateProjects />} />
@@ -45,6 +47,8 @@ export const Layout: React.FunctionComponent = () => {
           </Routes>
         </section>
       </section>
+      
+      <AlertAuth />
     </React.Fragment>
   )
 }
