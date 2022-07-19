@@ -8,7 +8,14 @@ import { useAuth } from '../../../../../providers/useAuth';
 
 
 export const CreateProjects:React.FunctionComponent = () => { 
-  const { users } = useAuth()
+  const { 
+    users, 
+    setAlert, 
+    setAlertTitle, 
+    setReRenderer,
+    goToMain 
+  } = useAuth()
+
   const [devs , setDevs] = React.useState([{}])
 
   const {
@@ -29,10 +36,13 @@ export const CreateProjects:React.FunctionComponent = () => {
     allEndpoints.endPoints.handleCreateProject(newData)
       .then(res => {
         reset()
-        console.log(res)
+        setReRenderer('work')
+        setAlert(true)
+        setAlertTitle('Успешно создано!')
+        goToMain('')
     })
     
-  }, [reset]);
+  }, [reset , setAlert , setAlertTitle , setReRenderer]);
 
   const setUpTheDevs = ( e: React.ChangeEvent<HTMLInputElement>) => {
     if(e.target.checked){

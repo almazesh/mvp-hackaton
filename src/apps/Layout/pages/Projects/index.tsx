@@ -15,7 +15,13 @@ interface IProjectProps {
 };
 
 export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitle }: IProjectProps) => {
-  const { projects , users , setReRenderer , setAlert , setAlertTitle} = useAuth();
+  const { 
+    projects, 
+    users,
+    setReRenderer, 
+    setAlert,
+    setAlertTitle
+  } = useAuth();
   
   const handleSwitch = (e: React.ChangeEvent<HTMLInputElement> , ids: number) => {
     const event = e.target.checked;
@@ -36,7 +42,6 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
         setAlertTitle('Успешно удалено!')
     })
   }
-
 
   if(!projects) return <Loader />;
 

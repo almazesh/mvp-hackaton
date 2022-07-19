@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthContext } from './AuthContext';
 import Cookies from 'js-cookie';
 import { allEndpoints } from '../api';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   children: React.ReactElement
@@ -16,6 +17,9 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
   const [alert , setAlert] = React.useState(false);
   const [alertTitle , setAlertTitle] = React.useState('')
   const [reRenderer , setReRenderer] = React.useState('work')
+  const navigate = useNavigate()
+
+  const goToMain = React.useCallback(() => navigate('/') , [navigate])
 
   const setToken = React.useCallback((tokenData: string | any) => {
     setTokenData(tokenData);
@@ -94,7 +98,8 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       alert,
       setReRenderer,
       alertTitle,
-      setAlertTitle
+      setAlertTitle,
+      goToMain
     }), 
     [
       isLoaded ,
@@ -109,7 +114,8 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       alert,
       setReRenderer,
       alertTitle,
-      setAlertTitle
+      setAlertTitle,
+      goToMain
     ]
   );
 

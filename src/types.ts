@@ -34,7 +34,8 @@ export interface IContext {
     alert: boolean,
     setReRenderer: TypeSetState<string>,
     alertTitle: string,
-    setAlertTitle: TypeSetState<string>
+    setAlertTitle: TypeSetState<string>,
+    goToMain: TypeSetState<any>
 }
 
 export interface ISidebarListType {
