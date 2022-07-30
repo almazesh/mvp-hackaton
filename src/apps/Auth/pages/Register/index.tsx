@@ -11,7 +11,7 @@ import { FormsValidations } from '../../../../components/Forms/FormsValidations/
 export const Register: React.FunctionComponent = () => {
   const { actions } = useRegister();
   const navigate = useNavigate();
-  const [isLoading , setIsLoading] = React.useState(false)
+  const [isLoading , setIsLoading] = React.useState(false);
 
   const {
     register,
@@ -28,21 +28,23 @@ export const Register: React.FunctionComponent = () => {
       setIsLoading(true);
 
       await actions.post(datas)
-      .then(res => {
-        reset();
+        .then(res => {
+          reset();
 
-        const { data: registerData } = res;
+          const { data: registerData } = res;
 
-        Cookies.set('userID' , registerData.id);
+          Cookies.set('userID' , registerData.id);
 
-        registerData && navigate('/auth/login/');
-      });
-    } catch (e) {
+          registerData && navigate('/auth/login/');
+
+        });
+      } catch (e) {
       
-    } finally {
-      setIsLoading(false)
-    }
-  },[actions , navigate , reset]);
+      } finally {
+        setIsLoading(false)
+      }
+
+  }, [actions , navigate , reset]);
 
   return (
     <React.Fragment>
@@ -116,6 +118,7 @@ export const Register: React.FunctionComponent = () => {
                     validBtn={isValid}
                     classStyle="btn-info"
                   />
+
                 </form>
 
                 <div className="mt-3 text-center">
@@ -139,4 +142,4 @@ export const Register: React.FunctionComponent = () => {
       </section>
     </React.Fragment>
   )
-}
+};

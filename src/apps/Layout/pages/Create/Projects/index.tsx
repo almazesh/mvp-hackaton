@@ -5,8 +5,6 @@ import { allEndpoints } from '../../../../../api';
 import { FormsValidations } from '../../../../../components/Forms/FormsValidations/export';
 import { useAuth } from '../../../../../providers/useAuth';
 
-
-
 export const CreateProjects:React.FunctionComponent = () => { 
   const { 
     users, 
@@ -42,7 +40,7 @@ export const CreateProjects:React.FunctionComponent = () => {
         goToMain('')
     })
     
-  }, [reset , setAlert , setAlertTitle , setReRenderer]);
+  }, [reset , setAlert , setAlertTitle , setReRenderer , goToMain]);
 
   const setUpTheDevs = ( e: React.ChangeEvent<HTMLInputElement>) => {
     if(e.target.checked){

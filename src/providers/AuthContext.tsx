@@ -17,6 +17,8 @@ export const AuthContext = React.createContext<IContext>(
     setReRenderer: () => {},
     alertTitle: '',
     setAlertTitle: () => {},
-    goToMain: () => {}
+    goToMain: () => {},
+    handleSearchByName: () => {},
+    setProjects:() => {}
   } as IContext)
 

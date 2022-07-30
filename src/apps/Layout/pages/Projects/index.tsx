@@ -9,12 +9,16 @@ import { FaUsersCog } from 'react-icons/fa'
 import { FormControl, Switch, Button } from '@chakra-ui/react';
 import { RiDeleteBin5Fill } from 'react-icons/ri'
 import { allEndpoints } from '../../../../api';
+import ProjectUndo from '../../../../components/projectUndo';
+import Filter from '../../../../components/filters';
+
 
 interface IProjectProps {
   setHeaderTitle: TypeSetState<string>
 };
 
 export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitle }: IProjectProps) => {
+
   const { 
     projects, 
     users,
@@ -33,7 +37,7 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
         setReRenderer('worlk')
       })
   };
-
+  
   const handleDelete = (id: number) => {
     allEndpoints.endPoints.handleDeleteProject(id)
       .then(res => {
@@ -41,15 +45,17 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
         setAlert(true)
         setAlertTitle('Успешно удалено!')
     })
-  }
+  };
 
   if(!projects) return <Loader />;
 
-  if(projects.length === 0) return <h1>None</h1>
+  if(projects.length === 0) return <ProjectUndo />;
 
   return (
     <section className={styles.project_container}>
-      <div className={styles.project_row}>
+      <Filter />      
+
+      <div className={styles.project_row + ' mt-5'}>
         {projects?.map((item: IProjects) => (
           <div key={item.id} className={styles.project_card}>
             <div className={styles.projects_status}>
@@ -87,7 +93,6 @@ export const Projects: React.FunctionComponent<IProjectProps> = ({ setHeaderTitl
               <span>Участники проекта</span>
               <FaUsersCog />
             </div>
-
             <ul className={styles.projects_developers}>
               {
                 users?.map((user:IUser) => {

@@ -94,12 +94,13 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       logOut,
       users,
       projects,
+      setProjects,
       setAlert,
       alert,
       setReRenderer,
       alertTitle,
       setAlertTitle,
-      goToMain
+      goToMain,
     }), 
     [
       isLoaded ,
@@ -115,7 +116,8 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       setReRenderer,
       alertTitle,
       setAlertTitle,
-      goToMain
+      goToMain,
+      setProjects
     ]
   );
 
