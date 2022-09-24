@@ -2,14 +2,14 @@ import React from 'react'
 import { useAuth } from '../../providers/useAuth';
 
 const Filter = () => {
-  const { setProjects , projects, setReRenderer } = useAuth()
+  const { setProjects , projects, setReRenderer } = useAuth();
 
   const handleSearchByName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const filtered = projects?.filter(item => 
-      item.caption.toLowerCase().includes(value.toLowerCase()))
+      item.caption.toLowerCase().includes(value.toLowerCase()));
 
-    setProjects(filtered)
+    setProjects(filtered);
   };
 
   const widthInputsCss = {
@@ -19,13 +19,9 @@ const Filter = () => {
   const handleChangeStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
 
-    console.log(value)
+    const filtered = projects?.filter(item => item.status === value);
 
-    const filtered = projects?.filter(item => item.status === value)
-
-    console.log(filtered)
-
-    setProjects(filtered)
+    setProjects(filtered);
   } 
 
   return (
@@ -69,4 +65,4 @@ const Filter = () => {
   )
 };
 
-export default Filter
+export default Filter;

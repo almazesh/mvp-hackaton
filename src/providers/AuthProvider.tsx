@@ -80,7 +80,7 @@ export const AuthProvider: React.FunctionComponent<IProps> = (props: IProps) => 
       .then(res => {
         const data = res.data;
         setProjects(data);
-        setReRenderer('workd')
+        setReRenderer('workd')  
       })
   }, [reRenderer]);
 

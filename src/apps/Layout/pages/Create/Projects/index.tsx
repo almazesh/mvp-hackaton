@@ -14,7 +14,14 @@ export const CreateProjects:React.FunctionComponent = () => {
     goToMain 
   } = useAuth()
 
-  const [devs , setDevs] = React.useState([{}])
+  const [devs , setDe [isLoaded , setIsLoaded] = React.useState(false);
+  const [user , setUser] = React.useState(null);
+  const [users , setUsers] = React.useState(null);
+  const [token , setTokenData] = React.useState(null);
+  const [projects , setProjects] = React.useState(null);
+  const [alert , setAlert] = React.useState(false);
+  const [alertTitle , setAlertTitle] = React.useState('')
+  const [reRevs] = React.useState([{}])
 
   const {
     reset,
